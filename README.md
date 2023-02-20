@@ -1,2 +1,12 @@
-# Practica-web-API-nodeJS-MongoDB
-Practica-web-API-nodeJS-MongoDB
+# PopApp
+
+Install dependencies with:
+```sh
+npm install
+```
+
+Start in development mode:
+
+```sh
+npm run dev
+```
