@@ -50,9 +50,10 @@ app.use(function (err, req, res, next) {
     err.status = 422;
   }
   res.status(err.status || 500);
-  // si lo que ha fallado es una peticion al API  
-  // devuelvo el error en JSON
-  console.log(req.originalUrl)
+
+  /**
+   * Errores de peticiones al API devueltos en JSON
+   */
   if (req.originalUrl.startsWith('/api/')) {
     res.json({ error: err.message });
     return;

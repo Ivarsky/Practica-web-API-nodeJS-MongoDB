@@ -7,6 +7,7 @@ router.get('/', async (req, res, next) => {
     try {
 
         const advertisements = await Advertisement.find();
+        //throw new Error('se ha roto');
         res.json({ results: advertisements });
 
     } catch (error) {
