@@ -11,7 +11,7 @@ router.get('/', async function (req, res, next) {
 
 
     const advertisements = await Advertisement.find();
-    //res.locals.advertisements = advertisements;
+    res.locals.advertisements = advertisements;
     console.log(advertisements);
 
     res.render('index');

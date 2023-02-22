@@ -15,6 +15,14 @@
   <p>Welcome to <%= title %>
   </p>
 
+  <h2>Lista de Anuncios</h2>
+  <% advertisements.forEach(advertisement=> { %>
+    <p>Anuncio de <%= advertisement.name %> se vende a <%= advertisement.price %> Euros
+          Foto: <%= advertisement.photo %>
+    </p>
+    <% }) %>
+
+
 </body>
 
 </html>
