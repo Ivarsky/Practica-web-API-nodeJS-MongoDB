@@ -8,7 +8,12 @@ const Advertisement = require('../../models/Advertise');
 router.get('/', async (req, res, next) => {
     try {
 
+        //filtros
         const filterByName = req.query.name;
+
+        //paginacion
+        const skip = req.query.skip;
+        const limit = req.query.limit;
 
         const filter = {};
 
@@ -16,7 +21,7 @@ router.get('/', async (req, res, next) => {
             filter.name = filterByName;
         }
 
-        const advertisements = await Advertisement.list(filter);
+        const advertisements = await Advertisement.list(filter, skip, limit);
         //throw new Error('se ha roto');
         res.json({ results: advertisements });
 

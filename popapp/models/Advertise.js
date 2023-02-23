@@ -9,8 +9,10 @@ const advertiseSchema = mongoose.Schema({
     tags: [String]
 });
 
-advertiseSchema.statics.list = function (filter) {
+advertiseSchema.statics.list = function (filter, skip, limit) {
     const query = Advertisement.find(filter);
+    query.skip(skip);
+    query.limit(limit);
 
     return query.exec();
 }
