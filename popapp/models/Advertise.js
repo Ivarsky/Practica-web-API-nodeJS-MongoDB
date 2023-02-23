@@ -9,6 +9,12 @@ const advertiseSchema = mongoose.Schema({
     tags: [String]
 });
 
+advertiseSchema.statics.list = function (filter) {
+    const query = Advertisement.find(filter);
+
+    return query.exec();
+}
+
 //crear el modelo de anuncio
 const Advertisement = mongoose.model('Anuncio', advertiseSchema);
 

@@ -8,7 +8,15 @@ const Advertisement = require('../../models/Advertise');
 router.get('/', async (req, res, next) => {
     try {
 
-        const advertisements = await Advertisement.find();
+        const filterByName = req.query.name;
+
+        const filter = {};
+
+        if (filterByName) {
+            filter.name = filterByName;
+        }
+
+        const advertisements = await Advertisement.list(filter);
         //throw new Error('se ha roto');
         res.json({ results: advertisements });
 
