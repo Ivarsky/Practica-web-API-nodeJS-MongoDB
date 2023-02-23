@@ -74,3 +74,57 @@ Returns only the advertisement asked by id
             ]
         }
 ```
+
+### //PUT /api/advertisements:(id) (body)
+Update advertisement with new parameters added in the body
+```sh
+{
+    "result": {
+        "_id": "63f51aa7e39d9030cd6dead9",
+        "name": "bicicleta",
+        "sell": true,
+        "price": 230.15,
+        "photo": "bici.jpg",
+        "tags": [
+            "lifestyle",
+            "motor"
+        ]
+    }
+}
+
+```
+to
+
+```sh
+{
+    "result": {
+        "_id": "63f51aa7e39d9030cd6dead9",
+        "name": "bicicleta",
+        "sell": true,
+        "price": 150,
+        "photo": "bici.jpg",
+        "tags": [
+            "lifestyle",
+            "motor"
+        ]
+    }
+}
+```
+parameter "price" changed.
+
+### //POST /api/advertisements (body)
+Create a new advertisement sending a POST pettition through API inserting in the body the parameters and the new values of them (use x-www-form-urlencoded)
+
+```sh
+{
+    "result": {
+        "name": "ItemName",
+        "sell": true or false,
+        "price": PriceNumber,
+        "photo": "Photofile.jpg",
+        "tags": [tag, tag],
+        "_id": "id",
+        "__v": 0
+    }
+}
+```

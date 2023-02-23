@@ -35,7 +35,7 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-//PUT /api/advertisements:(id) ()
+//PUT /api/advertisements:(id) (body)
 //Actualizamos anuncio
 
 
@@ -51,6 +51,26 @@ router.put('/:id', async (req, res, next) => {
 
     } catch (error) {
         next(error)
+    }
+})
+
+//POST /api/advertisements (body)
+//Crea un nuevo anuncio
+router.post('/', async (req, res, next) => {
+    try {
+
+        const advertiseData = req.body;
+
+        //creamos instancia de advertisement
+        const advertisement = new Advertisement(advertiseData);
+
+        //la persistimos en la DB
+        const persistedAdvertise = await advertisement.save();
+
+        res.json({ result: persistedAdvertise });
+
+    } catch (error) {
+        next(error);
     }
 })
 
