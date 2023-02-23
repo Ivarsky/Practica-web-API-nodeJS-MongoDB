@@ -37,3 +37,40 @@ To use MongoDB shell
 ```
 mongo
 ```
+
+## API Methods
+
+### GET /api/advertisements
+Returns all the advertisements list
+```sh
+"results": [
+        {
+            "_id": "63f51aa7e39d9030cd6dead9",
+            "name": "bicicleta",
+            "sell": true,
+            "price": 230.15,
+            "photo": "bici.jpg",
+            "tags": [
+                "lifestyle",
+                "motor"
+            ]
+        },
+            ...
+```
+
+### //GET /api/advertisements/(_id)
+
+Returns only the advertisement asked by id
+```sh
+{
+            "_id": "63f51b9be39d9030cd6deada",
+            "name": "iphone3gs",
+            "sell": false,
+            "price": 50,
+            "photo": "iphone.jpg",
+            "tags": [
+                "lifestyle",
+                "mobile"
+            ]
+        }
+```
