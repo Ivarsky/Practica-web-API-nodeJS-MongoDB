@@ -35,5 +35,25 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+//PUT /api/advertisements:(id) ()
+//Actualizamos anuncio
+
+
+router.put('/:id', async (req, res, next) => {
+    try {
+
+        const id = req.params.id;
+        const data = req.body;
+
+        const updatedAdvertise = await Advertisement.findByIdAndUpdate(id, data, { new: true });
+
+        res.json({ result: updatedAdvertise });
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+
 
 module.exports = router;
