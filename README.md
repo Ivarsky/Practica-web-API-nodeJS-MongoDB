@@ -4,6 +4,10 @@ Install dependencies with:
 ```sh
 npm install
 ```
+Initialize DB with:
+```sh
+npm run initDB
+```
 
 Start in development mode:
 
@@ -23,7 +27,7 @@ npx express-generator popapp --ejs
 ```
 
 
-## Start a MongoDB Server in WSL
+## Start a MongoDB Server in WSL2
 In root directory type
 ```sh
 sudo mkdir -p data/db
