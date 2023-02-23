@@ -10,6 +10,7 @@ router.get('/', async (req, res, next) => {
 
         //filtros
         const filterByName = req.query.name;
+        const filterBySell = req.query.sell;
 
         //paginacion
         const skip = req.query.skip;
@@ -20,6 +21,13 @@ router.get('/', async (req, res, next) => {
         if (filterByName) {
             filter.name = filterByName;
         }
+
+        //si sell = true
+        if (filterBySell) {
+            filter.sell = filterBySell;
+        }
+        //en caso de que sell = false devuelve esos
+
 
         const advertisements = await Advertisement.list(filter, skip, limit);
         //throw new Error('se ha roto');

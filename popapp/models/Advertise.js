@@ -9,6 +9,7 @@ const advertiseSchema = mongoose.Schema({
     tags: [String]
 });
 
+//metodo estatico para recibir una lista con posibilidad de paginacion y filtrado
 advertiseSchema.statics.list = function (filter, skip, limit) {
     const query = Advertisement.find(filter);
     query.skip(skip);
