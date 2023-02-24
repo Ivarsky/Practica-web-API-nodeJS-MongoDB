@@ -10,10 +10,11 @@ const advertiseSchema = mongoose.Schema({
 });
 
 //metodo estatico para recibir una lista con posibilidad de paginacion y filtrado
-advertiseSchema.statics.list = function (filter, skip, limit) {
+advertiseSchema.statics.list = function (filter, skip, limit, sort) {
     const query = Advertisement.find(filter);
     query.skip(skip);
     query.limit(limit);
+    query.sort(sort);
 
     return query.exec();
 }

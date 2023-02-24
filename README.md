@@ -169,3 +169,5 @@ Create a new advertisement sending a POST pettition through API inserting in the
 
 ### //DELETE /api/advertisements/:(id)
 Delete an advertisement sending a DELETE petition inserting in the url the id of the advertisement you want to delete.
+
+## WEB

@@ -13,10 +13,14 @@ router.get('/', async function (req, res, next) {
     const filterByName = req.query.name;
     const filterBySell = req.query.sell;
     const filterByTag = req.query.tags;
+    const filterByPrice = req.query.price;
 
     //paginacion
     const skip = req.query.skip;
     const limit = req.query.limit;
+
+    //sort
+    const sort = req.query.sort;
 
     const filter = {};
 
@@ -34,9 +38,13 @@ router.get('/', async function (req, res, next) {
       filter.tags = filterByTag;
     }
 
+    if (filterByPrice) {
+      filter.price = filterByPrice
+    }
 
 
-    const advertisements = await Advertisement.list(filter, skip, limit);
+
+    const advertisements = await Advertisement.list(filter, skip, limit, sort);
     res.locals.advertisements = advertisements;
 
     res.render('index');
