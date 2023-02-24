@@ -170,4 +170,42 @@ Create a new advertisement sending a POST pettition through API inserting in the
 ### //DELETE /api/advertisements/:(id)
 Delete an advertisement sending a DELETE petition inserting in the url the id of the advertisement you want to delete.
 
-## WEB
+## FRONTEND
+### http://localhost:3000
+To get a list of advertisements
+
+query string with parameters
+
+to search a product by name:
+```sh
+http://localhost:3000?name=nameProduct
+```
+
+available names: (bicicleta, iphone3gs, plumbus, mr.meeseks box, space ship)
+
+To search advertisements by tags:
+```sh
+http://localhost:3000?tag=tagName
+```
+
+available tags: (lifestyle, motor, mobile)
+
+to search only SELLING adds:
+```sh
+http://localhost:3000?sell=true
+```
+
+to search only BUYING adds:
+```sh
+http://localhost:3000?sell=false
+```
+
+to restrict the amount of advertisements loaded:
+```sh
+http://localhost:3000?limit=Number
+```
+
+to skip a number of advertisements:
+```sh
+http://localhost:3000?skip=Number
+```
