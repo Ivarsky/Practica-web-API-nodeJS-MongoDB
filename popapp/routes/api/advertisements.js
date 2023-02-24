@@ -39,6 +39,14 @@ router.get('/', async (req, res, next) => {
 
 })
 
+//GET api/advertisements/tags
+//Devuelve una lista de tags permitidos
+router.get('/tags', (req, res, next) => {
+
+    res.json({ results: ['lifestyle', 'motor', 'mobile'] });
+
+});
+
 //GET /api/advertisements/(_id)
 //devuelve un anuncio buscando por _id
 router.get('/:id', async (req, res, next) => {
