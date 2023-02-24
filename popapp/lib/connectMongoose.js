@@ -9,7 +9,6 @@ mongoose.connection.on('error', err => {
 mongoose.connection.once('open', () => {
     console.log('Conected to mongoDB in', mongoose.connection.name);
 });
-// TODO: PRUEBAS cambia localhost por 127.0.0.1
 mongoose.connect('mongodb://localhost:27017/popapp');
 
 module.exports = mongoose.connection;

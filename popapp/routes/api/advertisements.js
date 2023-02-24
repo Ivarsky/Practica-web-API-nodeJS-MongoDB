@@ -3,6 +3,8 @@ const { create } = require('../../models/Advertise');
 const router = express.Router();
 const Advertisement = require('../../models/Advertise');
 
+const { body, validationResult } = require('express-validator');
+
 //GET /api/advertisements
 //devuelve lista de anuncios
 router.get('/', async (req, res, next) => {
@@ -100,25 +102,28 @@ router.put('/:id', async (req, res, next) => {
 
 //POST /api/advertisements (body)
 //Crea un nuevo anuncio
-router.post('/', async (req, res, next) => {
-    try {
+router.post('/',
+    body('tags').isIn(['lifestyle', 'motor', 'mobile']).withMessage('solo los tags lifestyle, motor y mobile son permitidos'),
+    async (req, res, next) => {
+        try {
+            validationResult(req).throw();
 
-        const advertiseData = req.body;
+            const advertiseData = req.body;
 
-        //TODO:validaciones de tags 
+            //TODO:validaciones de tags 
 
-        //creamos instancia de advertisement
-        const advertisement = new Advertisement(advertiseData);
+            //creamos instancia de advertisement
+            const advertisement = new Advertisement(advertiseData);
 
-        //la persistimos en la DB
-        const persistedAdvertise = await advertisement.save();
+            //la persistimos en la DB
+            const persistedAdvertise = await advertisement.save();
 
-        res.json({ result: persistedAdvertise });
+            res.json({ result: persistedAdvertise });
 
-    } catch (error) {
-        next(error);
-    }
-})
+        } catch (error) {
+            next(error);
+        }
+    })
 
 //DELETE /api/advertisements/:(id)
 //Borra un anuncio

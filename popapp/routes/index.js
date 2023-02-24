@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-const { query, validationResult } = require('express-validator');
 const Advertisement = require('../models/Advertise');
 
 /* GET home page. */
