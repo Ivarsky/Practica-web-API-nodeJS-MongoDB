@@ -21,6 +21,9 @@ router.get('/', async (req, res, next) => {
         //sort
         const sort = req.query.sort;
 
+        // seleccion de campos
+        const fields = req.query.fields;
+
         const filter = {};
 
         if (filterByName) {
@@ -42,7 +45,7 @@ router.get('/', async (req, res, next) => {
         }
 
 
-        const advertisements = await Advertisement.list(filter, skip, limit, sort);
+        const advertisements = await Advertisement.list(filter, skip, limit, sort, fields);
         res.json({ results: advertisements });
 
     } catch (error) {
