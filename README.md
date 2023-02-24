@@ -61,6 +61,15 @@ Returns all the advertisements list
         },
             ...
 ```
+### GET /api/advertisements/tags
+Returns an array of tags available
+```sh
+"results": [
+        "lifestyle",
+        "motor",
+        "mobile"
+    ]
+```
 
 ### //GET /api/advertisements/(_id)
 
