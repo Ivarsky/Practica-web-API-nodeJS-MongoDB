@@ -60,7 +60,7 @@ router.get('/', async (req, res, next) => {
 //Devuelve una lista de tags permitidos
 router.get('/tags', (req, res, next) => {
 
-    res.json({ results: ['lifestyle', 'motor', 'mobile'] });
+    res.json({ results: ['lifestyle', 'motor', 'mobile', 'work'] });
 
 });
 
@@ -103,7 +103,7 @@ router.put('/:id', async (req, res, next) => {
 //POST /api/advertisements (body)
 //Crea un nuevo anuncio
 router.post('/',
-    body('tags').isIn(['lifestyle', 'motor', 'mobile']).withMessage('solo los tags lifestyle, motor y mobile son permitidos'),
+    body('tags').isIn(['lifestyle', 'motor', 'mobile', 'work']).withMessage('solo los tags lifestyle, motor, mobile y work son permitidos'),
     async (req, res, next) => {
         try {
             validationResult(req).throw();

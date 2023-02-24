@@ -49,11 +49,18 @@ async function initAdvertisements() {
             tags: ['lifestyle']
         },
         {
-            name: 'space ship',
+            name: 'nave espacial',
             sell: true,
             price: 350000,
             photo: 'spaceship.jpg',
             tags: ['motor']
+        },
+        {
+            name: 'pistola de portales',
+            sell: true,
+            price: 6000000,
+            photo: 'portalpistol.jpg',
+            tags: ['work']
         },
     ]);
     console.log(`Created ${inserted.length} advertisements`);
