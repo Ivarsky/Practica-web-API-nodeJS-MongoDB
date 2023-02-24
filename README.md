@@ -14,6 +14,8 @@ Start in development mode:
 ```sh
 npm run dev
 ```
+in popapp folder
+
 ## General info
 Application created with:
 ```sh
