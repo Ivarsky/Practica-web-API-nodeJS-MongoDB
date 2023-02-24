@@ -17,9 +17,13 @@
 
   <h2>Lista de Anuncios</h2>
   <% advertisements.forEach(advertisement=> { %>
-    <p>Anuncio de <%= advertisement.name %> se vende a <%= advertisement.price %> Euros
-          Foto: <%= advertisement.photo %>
-    </p>
+
+    <h3>
+      Anuncio <%= advertisement.name %> a <%= advertisement.price %> Euros
+    </h3>
+    <div>
+      <img src="/images/anuncios/<%= advertisement.photo %>">
+    </div>
     <% }) %>
 
 

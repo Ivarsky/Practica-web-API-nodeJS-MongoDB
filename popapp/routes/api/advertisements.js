@@ -35,7 +35,6 @@ router.get('/', async (req, res, next) => {
 
 
         const advertisements = await Advertisement.list(filter, skip, limit);
-        //throw new Error('se ha roto');
         res.json({ results: advertisements });
 
     } catch (error) {
@@ -94,6 +93,8 @@ router.post('/', async (req, res, next) => {
     try {
 
         const advertiseData = req.body;
+
+        //TODO:validaciones de tags 
 
         //creamos instancia de advertisement
         const advertisement = new Advertisement(advertiseData);
