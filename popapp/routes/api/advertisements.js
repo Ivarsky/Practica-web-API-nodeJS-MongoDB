@@ -11,6 +11,7 @@ router.get('/', async (req, res, next) => {
         //filtros
         const filterByName = req.query.name;
         const filterBySell = req.query.sell;
+        const filterByTag = req.query.tags;
 
         //paginacion
         const skip = req.query.skip;
@@ -27,6 +28,10 @@ router.get('/', async (req, res, next) => {
             filter.sell = filterBySell;
         }
         //en caso de que sell = false devuelve esos
+
+        if (filterByTag) {
+            filter.tags = filterByTag;
+        }
 
 
         const advertisements = await Advertisement.list(filter, skip, limit);

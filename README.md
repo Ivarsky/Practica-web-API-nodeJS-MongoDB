@@ -87,6 +87,31 @@ Returns only the advertisement asked by id
             ]
         }
 ```
+### //GET /api/advertisements?name=nameProduct
+To search advertisements by name of product
+
+available names: (bicicleta, iphone3gs, plumbus, mr.meeseks box, space ship)
+
+### //GET /api/advertisements?tag=tagName
+To search advertisements by tags
+
+available tags: (lifestyle, motor, mobile)
+
+### //GET /api/advertisements?sell=true
+to search only SELLING 
+
+### //GET /api/advertisements?sell=false
+to search only BUYING 
+
+### Pagination and skip
+to restrict the amount of advertisements loaded:
+```sh
+/api/advertisements?limit=Number
+```
+to skip a number of advertisements:
+```sh
+/api/advertisements?skip=Number
+```
 
 ### //PUT /api/advertisements:(id) (body)
 Update advertisement with new parameters added in the body
