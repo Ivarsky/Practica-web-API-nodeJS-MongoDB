@@ -33,7 +33,7 @@ app.use(
   jwtAuthMiddleware,
   require("./routes/api/advertisements")
 );
-app.post("/api/login", loginController.postAPI);
+app.post("/api/authenticate", loginController.postAPI);
 
 /**
  * Rutas del Website
