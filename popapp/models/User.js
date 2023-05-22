@@ -1,14 +1,25 @@
-// Conection
+// Conexión
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-// Create schema
+// Creación de esquema
 const userSchema = mongoose.Schema({
   email: String,
   password: String,
 });
 
-// Create model
+//hasheado de pass
+userSchema.statics.hashPassword = function (plaintextPassword) {
+  return bcrypt.hash(plaintextPassword, 7);
+};
+
+//comprobación de pass
+userSchema.methods.comparePassword = function (plaintextPassword) {
+  return bcrypt.compare(plaintextPassword, this.password);
+};
+
+// Creación de modelo
 const User = mongoose.model("User", userSchema);
 
-// exporting
+// exportar
 module.exports = User;
