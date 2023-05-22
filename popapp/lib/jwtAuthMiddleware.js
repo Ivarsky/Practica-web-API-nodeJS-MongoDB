@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     // recogida de jwt de la cabecera, del body, o la query-string
     const jwtToken = req.get("Authorization") || req.body.jwt || req.query.jwt;
 
-    // comprobación de jwtToken
+    // comprobación existencia de jwtToken
     if (!jwtToken) {
       const error = createError(401, "no token provided");
       next(error);
@@ -20,9 +20,16 @@ module.exports = async (req, res, next) => {
 
     next();
   } catch (err) {
+    //validez del token
     if (err.message === "invalid token") {
       next(createError(401, "invalid token"));
     }
+
+    //expiración del token
+    if (err.message === "jwt expired") {
+      next(createError(401, "jwt expired"));
+    }
+
     next(err);
   }
 };
