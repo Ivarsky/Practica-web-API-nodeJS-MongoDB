@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const { appendFileSync } = require("fs");
 const LoginController = require("./controllers/loginController");
+const jwtAuthMiddleware = require("./lib/jwtAuthMiddleware");
 
 require("./lib/connectMongoose");
 
@@ -27,7 +28,11 @@ const loginController = new LoginController();
 /**
  * Rutas del API
  */
-app.use("/api/advertisements", require("./routes/api/advertisements"));
+app.use(
+  "/api/advertisements",
+  jwtAuthMiddleware,
+  require("./routes/api/advertisements")
+);
 app.post("/api/login", loginController.postAPI);
 
 /**
