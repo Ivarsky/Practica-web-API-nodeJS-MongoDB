@@ -6,6 +6,7 @@ var logger = require("morgan");
 const { appendFileSync } = require("fs");
 const LoginController = require("./controllers/loginController");
 const jwtAuthMiddleware = require("./lib/jwtAuthMiddleware");
+const i18n = require("./lib/i18nConfigure");
 
 require("./lib/connectMongoose");
 
@@ -17,6 +18,7 @@ app.set("view engine", "ejs");
 
 app.locals.title = "PopApp";
 
+app.use(i18n.init);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
