@@ -19,7 +19,7 @@ class LoginController {
       //si existe y la pass coincide
       //crea JWT con el _id del usuario dentro
       const token = await jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: 60,
+        expiresIn: "2d",
       });
 
       res.json({ jwt: { token } });
