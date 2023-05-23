@@ -18,11 +18,11 @@ app.set("view engine", "ejs");
 
 app.locals.title = "PopApp";
 
+app.use(cookieParser());
 app.use(i18n.init);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 const loginController = new LoginController();
@@ -42,6 +42,7 @@ app.post("/api/authenticate", loginController.postAPI);
  */
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
+app.use("/change-locale", require("./routes/change-locale"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
