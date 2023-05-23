@@ -12,15 +12,21 @@
   <h1>
     <%= title %>
   </h1>
-  <p>Welcome to <%= title %>
+  <p><%= __('Welcome to ') %><%= title %>
   </p>
 
-  <h2>Lista de Anuncios</h2>
+  <h2><%= __('Advertisement list: ')%></h2>
   <% advertisements.forEach(advertisement=> { %>
 
     <h3>
-      Anuncio <%= advertisement.name %> a <%= advertisement.price %> Euros
+      <%= __('Advert ')%><%= advertisement.name %> <%= __('at ')%><%= advertisement.price %> Euros
     </h3>
+    <p><%= __('Tags: ') %></p>
+    <ul>
+      <% advertisement.tags.forEach(function(tag) { %>
+        <li><%= __(tag) %></li>
+      <% }); %>
+    </ul>
     <div>
       <img src="/images/anuncios/<%= advertisement.photo %>">
     </div>

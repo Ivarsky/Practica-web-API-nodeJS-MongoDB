@@ -1,1 +1,11 @@
-{}
+{
+	"Welcome to ": "Welcome to ",
+	"Advertisement list: ": "Advertisement list: ",
+	"Advert ": "Advert ",
+	"at ": "at ",
+	"Tags: ": "Tags: ",
+	"lifestyle": "lifestyle",
+	"motor": "motor",
+	"mobile": "mobile",
+	"work": "work"
+}
