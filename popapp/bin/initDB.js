@@ -39,6 +39,13 @@ async function initAdvertisements() {
       tags: ["lifestyle", "mobile"],
     },
     {
+      name: "Jerry Smith",
+      sell: true,
+      price: 5,
+      photo: "jerry.jpg",
+      tags: ["lifestyle"],
+    },
+    {
       name: "plumbus",
       sell: true,
       price: 415,
