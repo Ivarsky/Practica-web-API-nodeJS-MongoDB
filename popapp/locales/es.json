@@ -1,11 +1,13 @@
 {
-	"Welcome to ": "Bienvenido a",
-	"Advertisement list: ": "Lista de anuncios: ",
-	"Advert ": "Anuncio ",
-	"at ": "a ",
+	"Welcome to ": "Bienvenido a ",
 	"Tags: ": "Etiquetas: ",
 	"lifestyle": "Estilo de vida",
 	"motor": "motor",
 	"mobile": "móvil",
-	"work": "trabajo"
+	"work": "trabajo",
+	"Shop in style": "Compra con estilo",
+	"Advert: ": "Anuncio: ",
+	"Advert ": "Advert ",
+	"At ": "A ",
+	"Advertisement list ": "Listado de Anuncios"
 }
