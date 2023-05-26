@@ -2,7 +2,7 @@ const express = require("express");
 const { create } = require("../../models/Advertise");
 const router = express.Router();
 const Advertisement = require("../../models/Advertise");
-
+const upload = require("../../lib/uploadConfigure");
 const { body, validationResult } = require("express-validator");
 
 //GET /api/advertisements
@@ -100,6 +100,7 @@ router.put("/:id", async (req, res, next) => {
 //Crea un nuevo anuncio
 router.post(
   "/",
+  upload.single("photo"),
   body("tags")
     .isIn(["lifestyle", "motor", "mobile", "work"])
     .withMessage(
@@ -107,11 +108,11 @@ router.post(
     ),
   async (req, res, next) => {
     try {
+      console.log(req.file);
       validationResult(req).throw();
 
       const advertiseData = req.body;
-
-      //TODO:validaciones de tags
+      advertiseData.photo = req.file.filename;
 
       //creamos instancia de advertisement
       const advertisement = new Advertisement(advertiseData);
