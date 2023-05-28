@@ -124,7 +124,9 @@ router.post(
       };
 
       // petición de creación de thumbnail
-      await new Promise((resolve) => requester.send(event, resolve));
+      const thumbnailPath = await new Promise((resolve) =>
+        requester.send(event, resolve)
+      );
 
       advertiseData.photo = advertiseData.originalPhoto.replace(
         ".jpg",
@@ -138,6 +140,9 @@ router.post(
       const persistedAdvertise = await advertisement.save();
 
       console.log(persistedAdvertise);
+
+      // mensaje con la ruta del filesystem a la imagen (requisito práctica)
+      console.log("Ruta del filesystema al thumbnail: ", thumbnailPath);
 
       res.json({ result: persistedAdvertise });
     } catch (error) {
