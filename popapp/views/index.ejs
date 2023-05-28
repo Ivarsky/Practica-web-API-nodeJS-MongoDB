@@ -24,9 +24,9 @@
       <div class="row gx-4 gx-lg-5 justify-content-center product-card">
         <% advertisements.forEach(function (advertisement) { %>
           <div class="col mb-5">
-            <div class="card h-100">
+            <div class="card h-100" style="max-width: 200px">
               <!-- Product image-->
-              <img class="card-img-top" src="/images/anuncios/<%= advertisement.photo %>" alt="..." />
+              <img class="card-img-top" style="max-width: 200px; max-height: 200px;" src="/images/anuncios/<%= advertisement.photo %>" alt="..." />
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
