@@ -20,6 +20,14 @@ npm run dev
 
 in popapp folder
 
+Start thumbnail microservice:
+
+```sh
+node thumbnailService.js
+```
+
+in microservices folder
+
 ## General info
 
 Application created with:
