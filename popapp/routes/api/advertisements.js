@@ -4,6 +4,9 @@ const router = express.Router();
 const Advertisement = require("../../models/Advertise");
 const upload = require("../../lib/uploadConfigure");
 const { body, validationResult } = require("express-validator");
+const { Requester } = require("cote");
+
+const requester = new Requester({ name: "thumbnail-requester" });
 
 //GET /api/advertisements
 //devuelve lista de anuncios
@@ -120,7 +123,18 @@ router.post(
       //la persistimos en la DB
       const persistedAdvertise = await advertisement.save();
 
-      res.json({ result: persistedAdvertise });
+      // peticion de thumbnail
+      const event = {
+        type: "create-thumbnail",
+        originalImagePath: req.file.path,
+        thumbnailSize: 200, // TODO: pasar a .env
+      };
+
+      const thumbnailPath = await new Promise((resolve) =>
+        requester.send(event, resolve)
+      );
+
+      res.json({ result: persistedAdvertise, thumbnailPath });
     } catch (error) {
       next(error);
     }
