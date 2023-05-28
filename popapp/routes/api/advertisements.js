@@ -111,11 +111,25 @@ router.post(
     ),
   async (req, res, next) => {
     try {
-      console.log(req.file);
       validationResult(req).throw();
 
       const advertiseData = req.body;
-      advertiseData.photo = req.file.filename;
+      advertiseData.originalPhoto = req.file.filename;
+
+      // evento para enviar petición de creación de thumbnail
+      const event = {
+        type: "create-thumbnail",
+        originalImagePath: req.file.path,
+        thumbnailSize: 100, // con 200 se visualiza mejor pero por requirimiento de la practica lo dejo a 100
+      };
+
+      // petición de creación de thumbnail
+      await new Promise((resolve) => requester.send(event, resolve));
+
+      advertiseData.photo = advertiseData.originalPhoto.replace(
+        ".jpg",
+        "-thumbnail.jpg"
+      );
 
       //creamos instancia de advertisement
       const advertisement = new Advertisement(advertiseData);
@@ -123,18 +137,9 @@ router.post(
       //la persistimos en la DB
       const persistedAdvertise = await advertisement.save();
 
-      // peticion de thumbnail
-      const event = {
-        type: "create-thumbnail",
-        originalImagePath: req.file.path,
-        thumbnailSize: 200, // TODO: pasar a .env
-      };
+      console.log(persistedAdvertise);
 
-      const thumbnailPath = await new Promise((resolve) =>
-        requester.send(event, resolve)
-      );
-
-      res.json({ result: persistedAdvertise, thumbnailPath });
+      res.json({ result: persistedAdvertise });
     } catch (error) {
       next(error);
     }
